@@ -7,10 +7,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Align;
 import com.kw.gdx.listener.OrdinaryButtonListener;
 import com.kw.gdx.utils.Layer;
+import com.tony.photoshader.filter.Filter;
+import com.tony.photoshader.shader.ShaderType;
+import com.tony.photoshader.shader.ShaderUtils;
 
 public class NavItem extends Group {
     private PhotoPage photoPage;
-    private ShaderProgram program;
+    private Filter filter;
     public NavItem(PhotoPage photoPage){
         setSize(300,300);
         Image bgImg = Layer.getShadow();
@@ -22,8 +25,12 @@ public class NavItem extends Group {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                photoPage.setShader();
+                photoPage.setShader(filter);
             }
         });
+    }
+
+    public void setShaderType(ShaderType value) {
+        filter = ShaderUtils.getManager().getType(value);
     }
 }
