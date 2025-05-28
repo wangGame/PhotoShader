@@ -2,6 +2,7 @@ package com.tony.photoshader;
 
 import com.kw.gdx.BaseGame;
 import com.kw.gdx.constant.Constant;
+import com.kw.gdx.resource.annotation.GameInfo;
 import com.tony.photoshader.screen.PhotoScreen;
 
 public class PhotoShader extends BaseGame {

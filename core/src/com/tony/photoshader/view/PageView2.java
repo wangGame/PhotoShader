@@ -33,7 +33,8 @@ public class PageView2 extends Group {
         drawable = (TextureRegionDrawable) image.getDrawable();
         addActor(image);
         image.setOrigin(Align.center);
-        image.setPosition(getWidth() / 2f, getHeight() / 2f, Align.center);
+//        image.setPosition(getWidth() / 2f, getHeight() / 2f, Align.center);
+        image.setSize(500,800);
 
     }
 
@@ -41,9 +42,8 @@ public class PageView2 extends Group {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         processor.process(texture,batch);
-        TextureRegionDrawable drawable1 = (TextureRegionDrawable) image.getDrawable();
         region.setTexture(processor.getResult());
-        drawable1.setRegion(region);
+        region.setRegion(0,0,texture.getWidth(),texture.getHeight());
         super.draw(batch, parentAlpha);
     }
 }
