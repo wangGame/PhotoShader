@@ -10,6 +10,7 @@ import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
 import com.tony.photoshader.dialog.SelectPhotoDialog;
 import com.tony.photoshader.view.ControllView;
+import com.tony.photoshader.view.PageView2;
 import com.tony.photoshader.view.PhotoPage;
 
 public class PhotoScreen extends BaseScreen {
@@ -22,11 +23,13 @@ public class PhotoScreen extends BaseScreen {
     @Override
     public void initView() {
         super.initView();
-        this.photoPage = new PhotoPage();
-        addActor(photoPage);
-        photoPage.setPosition(540,1360, Align.center);
-        this.controllView = new ControllView(photoPage);
-        addActor(controllView);
-        controllView.setPosition(540,100, Align.bottom);
+        PageView2 pageView2 = new PageView2();
+        addActor(pageView2);
+//        this.photoPage = new PhotoPage();
+//        addActor(photoPage);
+//        photoPage.setPosition(540,1360, Align.center);
+//        this.controllView = new ControllView(photoPage);
+//        addActor(controllView);
+//        controllView.setPosition(540,100, Align.bottom);
     }
 }
