@@ -25,7 +25,7 @@ public class PageView extends Group {
         setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
         region = new TextureRegion();
         image = new Image(region);
-        image.setSize(512, 512);
+        image.setSize(texture.getWidth(), texture.getHeight());
         image.setOrigin(Align.center);
         image.setDebug(true);
         image.setPosition(getWidth()/2f,getHeight()/2f,Align.center);
@@ -41,9 +41,8 @@ public class PageView extends Group {
         region.setRegion(0, 0, processed.getWidth(), processed.getHeight());
         if (processor.getShaders().size() % 2 != 0) {
             region.flip(false, true); // FBO 纹理默认是颠倒的
-        }else {
-
         }
+        image.setSize(region.getRegionWidth(),region.getRegionHeight());
     }
 
     public void setShader(Filter filter) {

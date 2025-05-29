@@ -26,8 +26,10 @@ public class ShaderChainProcessor {
         this.batch = new SpriteBatch();
         this.shaders = new ArrayList<>();
 
-        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
-        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
+//        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
+//        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
+        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
+        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
     }
 
     public void addShader(ShaderProgram shaderProgram){
