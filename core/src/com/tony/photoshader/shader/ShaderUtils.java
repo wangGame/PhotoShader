@@ -1,6 +1,9 @@
 package com.tony.photoshader.shader;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.tony.photoshader.filter.ChangeAFilter;
+import com.tony.photoshader.filter.ChangeColorFilter;
+import com.tony.photoshader.filter.ChangeScaleFilter;
 import com.tony.photoshader.filter.Filter;
 import com.tony.photoshader.filter.GrayFilter;
 
@@ -36,6 +39,12 @@ public class ShaderUtils {
         Filter filter = null;
         if (shaderType == ShaderType.GRAY){
             filter = new GrayFilter();
+        }else if (shaderType == ShaderType.A){
+            filter = new ChangeAFilter();
+        }else if (shaderType == ShaderType.COLOR){
+            filter = new ChangeColorFilter();
+        }else if (shaderType == ShaderType.SCALE){
+            filter = new ChangeScaleFilter();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);

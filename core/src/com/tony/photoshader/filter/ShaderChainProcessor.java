@@ -21,7 +21,6 @@ public class ShaderChainProcessor {
     public ShaderChainProcessor(int width, int height) {
         this.width = width;
         this.height = height;
-
         shaders = new ArrayList<>();
         fboA = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
         fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
@@ -34,7 +33,6 @@ public class ShaderChainProcessor {
     public void process(Texture inputTexture, Batch batch) {
         Texture currentInput = inputTexture;
         FrameBuffer currentOutput;
-
         for (int i = 0; i < shaders.size(); i++) {
             ShaderProgram shader = shaders.get(i);
             currentOutput = (i % 2 == 0) ? fboA : fboB;
@@ -55,10 +53,8 @@ public class ShaderChainProcessor {
 
             currentInput = currentOutput.getColorBufferTexture();
         }
-
         // 保存最后结果
         result = currentInput;
-        batch.setShader(null);
     }
 
     public Texture getResult() {
