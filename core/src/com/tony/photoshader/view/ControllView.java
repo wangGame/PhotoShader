@@ -9,15 +9,14 @@ import com.tony.photoshader.shader.ShaderType;
 
 public class ControllView extends Group {
     private ScrollPane scrollPane;
-    public ControllView(PhotoPage photoPage){
+    public ControllView(PageView photoPage){
         setSize(1000,600);
 
         scrollPane = new ScrollPane(new Table(){{
             for (ShaderType value : ShaderType.values()) {
-                for (int i = 0; i < 10; i++) {
-                    NavItem navItem = new NavItem(photoPage);
-                    add(navItem).pad(10);
-                }
+                NavItem navItem = new NavItem(photoPage);
+                navItem.setShaderType(value);
+                add(navItem).pad(10);
             }
         }});
         scrollPane.setSize(1080,320);

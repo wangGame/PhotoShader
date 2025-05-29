@@ -12,9 +12,9 @@ import com.tony.photoshader.shader.ShaderType;
 import com.tony.photoshader.shader.ShaderUtils;
 
 public class NavItem extends Group {
-    private PhotoPage photoPage;
+    private PageView photoPage;
     private Filter filter;
-    public NavItem(PhotoPage photoPage){
+    public NavItem(PageView photoPage){
         setSize(300,300);
         Image bgImg = Layer.getShadow();
         bgImg.setSize(getWidth(),getHeight());

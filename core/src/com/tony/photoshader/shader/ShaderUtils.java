@@ -37,9 +37,7 @@ public class ShaderUtils {
     public Filter getType(ShaderType shaderType){
         if (cacheProgram.containsKey(shaderType))return cacheProgram.get(shaderType);
         Filter filter = null;
-        if (shaderType == ShaderType.GRAY){
-            filter = new GrayFilter();
-        }else if (shaderType == ShaderType.A){
+        if (shaderType == ShaderType.A){
             filter = new ChangeAFilter();
         }else if (shaderType == ShaderType.COLOR){
             filter = new ChangeColorFilter();

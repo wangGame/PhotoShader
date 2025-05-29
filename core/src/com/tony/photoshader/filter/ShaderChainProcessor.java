@@ -91,4 +91,8 @@ public class ShaderChainProcessor {
             shader.dispose();
         }
     }
+
+    public List<ShaderProgram> getShaders() {
+        return shaders;
+    }
 }
