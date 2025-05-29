@@ -20,8 +20,8 @@ public class DesktopLauncher {
         config.y = 0;
         config.samples = 8;
         config.useHDPI = true;
-        config.height = (int)(720 * 0.5f);
-        config.width = (int) (720 * 0.5f);
+        config.height = (int)(720*2);
+        config.width = (int) (720);
         config.stencil = 8;
         new LwjglApplication(new PhotoShader(), config);
     }

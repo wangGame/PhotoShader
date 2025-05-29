@@ -1,73 +1,56 @@
 package com.tony.photoshader.filter;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.kw.gdx.constant.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShaderChainProcessor {
+public class ShaderChainProcessor1 {
     private final int width, height;
-    private final SpriteBatch batch;
+    private SpriteBatch batch;
     private final FrameBuffer fboA, fboB;
     private List<ShaderProgram> shaders;
     private Texture result;
 
-    public ShaderChainProcessor(int width, int height) {
+    public ShaderChainProcessor1(int width, int height) {
         this.width = width;
         this.height = height;
-        this.batch = new SpriteBatch();
-        this.shaders = new ArrayList<>();
-
-        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
-        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
+        batch = new SpriteBatch();
+        shaders = new ArrayList<>();
+        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
+        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
     }
 
-    public void addShader(ShaderProgram shaderProgram){
-        shaders.add(shaderProgram);
+    public void addShader(ShaderProgram program){
+        shaders.add(program);
     }
 
-    public Texture process(Texture inputTexture) {
+    public void process(Texture inputTexture, Batch batch1) {
         Texture currentInput = inputTexture;
         FrameBuffer currentOutput;
-
         for (int i = 0; i < shaders.size(); i++) {
             ShaderProgram shader = shaders.get(i);
             currentOutput = (i % 2 == 0) ? fboA : fboB;
-
+            batch.flush();
             currentOutput.begin();
             Gdx.gl.glClearColor(0, 0, 0, 0);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.setShader(shader);
-            batch.begin();
-
             // FBO 输出是上下翻转的
             currentInput.bind();
             batch.draw(currentInput, 0, 0, width, height, 0, 1, 1, 0);
-            currentInput.bind(-1);
-            batch.setShader(null);
-            batch.end();
+            batch.flush();
             currentOutput.end();
-
             currentInput = currentOutput.getColorBufferTexture();
-
-
         }
-
         // 保存最后结果
         result = currentInput;
-//        batch.begin();
-//        result.bind();
-//        batch.draw(result, 0, 0, 512, 512, 0, 1, 1, 0); // Y 轴翻转
-//        batch.end();
-//        batch.setShader(null);
-        return result;
     }
 
     public Texture getResult() {
@@ -75,7 +58,6 @@ public class ShaderChainProcessor {
     }
 
     public void dispose() {
-        batch.dispose();
         fboA.dispose();
         fboB.dispose();
         for (ShaderProgram shader : shaders) {
