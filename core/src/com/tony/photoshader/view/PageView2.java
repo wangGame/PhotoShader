@@ -26,8 +26,8 @@ public class PageView2 extends Group {
         processor = new ShaderChainProcessor((int) ((int) Constant.GAMEWIDTH/2.0f), (int) ((int) Constant.GAMEWIDTH/2.f));
 //        processor.addShader(ShaderUtils.getManager().getType(ShaderType.GRAY).getProgram());
         processor.addShader(ShaderUtils.getManager().getType(ShaderType.A).getProgram());
-//        processor.addShader(ShaderUtils.getManager().getType(ShaderType.COLOR).getProgram());
-//        processor.addShader(ShaderUtils.getManager().getType(ShaderType.SCALE).getProgram());
+        processor.addShader(ShaderUtils.getManager().getType(ShaderType.COLOR).getProgram());
+        processor.addShader(ShaderUtils.getManager().getType(ShaderType.SCALE).getProgram());
 
 
         setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT - 100);

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ShaderChainProcessor {
     private final int width, height;
-
+    private SpriteBatch batch;
     private final FrameBuffer fboA, fboB;
     private List<ShaderProgram> shaders;
     private Texture result;
@@ -21,6 +21,7 @@ public class ShaderChainProcessor {
     public ShaderChainProcessor(int width, int height) {
         this.width = width;
         this.height = height;
+        batch = new SpriteBatch();
         shaders = new ArrayList<>();
         fboA = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
         fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
@@ -40,17 +41,12 @@ public class ShaderChainProcessor {
             currentOutput.begin();
             Gdx.gl.glClearColor(0, 0, 0, 0);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
             batch.setShader(shader);
-
-
             // FBO 输出是上下翻转的
             currentInput.bind();
             batch.draw(currentInput, 0, 0, width, height, 0, 1, 1, 0);
             batch.flush();
-
             currentOutput.end();
-
             currentInput = currentOutput.getColorBufferTexture();
         }
         // 保存最后结果
@@ -62,7 +58,6 @@ public class ShaderChainProcessor {
     }
 
     public void dispose() {
-
         fboA.dispose();
         fboB.dispose();
         for (ShaderProgram shader : shaders) {
