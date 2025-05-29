@@ -26,6 +26,8 @@ public class PageView3 extends Group {
         // 添加一个简单 shader（比如灰度或其他自定义）
         processor.addShader(ShaderUtils.getManager().getType(ShaderType.SCALE).getProgram());
         processor.addShader(ShaderUtils.getManager().getType(ShaderType.COLOR).getProgram());
+        processor.addShader(ShaderUtils.getManager().getType(ShaderType.COLOR).getProgram());
+
 
         setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         region = new TextureRegion();
@@ -46,7 +48,7 @@ public class PageView3 extends Group {
         region.setTexture(processed);
         region.setRegion(0, 0, processed.getWidth(), processed.getHeight());
         region.flip(false, true); // FBO 纹理默认是颠倒的
-        image.setSize(region.getRegionWidth(), region.getRegionHeight());
+
     }
 
     @Override

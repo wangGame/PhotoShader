@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.Matrix4;
 import com.kw.gdx.constant.Constant;
 
 import java.util.ArrayList;
@@ -45,8 +46,10 @@ public class ShaderChainProcessor {
             Gdx.gl.glClearColor(0, 0, 0, 0);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.setShader(shader);
-            batch.begin();
 
+            batch.begin();
+            Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
+            projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);
             // FBO 输出是上下翻转的
             currentInput.bind();
             batch.draw(currentInput, 0, 0, width, height, 0, 1, 1, 0);
@@ -68,6 +71,12 @@ public class ShaderChainProcessor {
 //        batch.end();
 //        batch.setShader(null);
         return result;
+    }
+
+    private Matrix4 projectionMatrix;
+
+    public void setProjection(float width, float height) {
+        this.projectionMatrix = new Matrix4().setToOrtho2D(0, 0, width, height);
     }
 
     public Texture getResult() {
