@@ -12,10 +12,10 @@ import com.tony.photoshader.shader.ShaderType;
 import com.tony.photoshader.shader.ShaderUtils;
 
 public class NavItem extends Group {
-    private PageView photoPage;
     private Filter filter;
+    private boolean addEd;
     public NavItem(PageView photoPage){
-        setSize(300,300);
+        setSize(100,100);
         Image bgImg = Layer.getShadow();
         bgImg.setSize(getWidth(),getHeight());
         addActor(bgImg);
@@ -25,7 +25,12 @@ public class NavItem extends Group {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                photoPage.setShader(filter);
+                addEd = !addEd;
+                if (addEd) {
+                    photoPage.setShader(filter);
+                }else {
+                    photoPage.removeShader(filter);
+                }
             }
         });
     }

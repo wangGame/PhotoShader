@@ -21,6 +21,6 @@ public class PhotoScreen extends BaseScreen {
 
         this.controllView = new ControllView(pageView);
         addActor(controllView);
-        controllView.setPosition(540,100, Align.bottom);
+        controllView.setPosition(540,360, Align.bottom);
     }
 }

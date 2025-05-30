@@ -30,6 +30,11 @@ public class PageView extends Group {
         image.setDebug(true);
         image.setPosition(getWidth()/2f,getHeight()/2f,Align.center);
         addActor(image);
+
+
+        float ws = Constant.GAMEWIDTH / image.getWidth();
+        float hs = Constant.GAMEWIDTH / image.getHeight();
+        image.setScale(Math.min(ws,hs));
     }
 
     @Override
@@ -47,6 +52,10 @@ public class PageView extends Group {
 
     public void setShader(Filter filter) {
         processor.addShader(filter.getProgram());
+    }
+
+    public void removeShader(Filter filter) {
+        processor.removeShader(filter.getProgram());
     }
 
 }

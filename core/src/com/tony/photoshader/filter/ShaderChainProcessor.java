@@ -25,30 +25,20 @@ public class ShaderChainProcessor {
         this.height = height;
         this.batch = new SpriteBatch();
         this.shaders = new ArrayList<>();
-
-//        fboA = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
-//        fboB = new FrameBuffer(Pixmap.Format.RGBA8888, (int) Constant.GAMEWIDTH, (int) Constant.GAMEHIGHT, false);
         fboA = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
         fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
-    }
-
-    public void addShader(ShaderProgram shaderProgram){
-        shaders.add(shaderProgram);
     }
 
     public Texture process(Texture inputTexture) {
         Texture currentInput = inputTexture;
         FrameBuffer currentOutput;
-
         for (int i = 0; i < shaders.size(); i++) {
             ShaderProgram shader = shaders.get(i);
             currentOutput = (i % 2 == 0) ? fboA : fboB;
-
             currentOutput.begin();
             Gdx.gl.glClearColor(0, 0, 0, 0);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.setShader(shader);
-
             batch.begin();
             Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
             projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);
@@ -59,26 +49,11 @@ public class ShaderChainProcessor {
             batch.setShader(null);
             batch.end();
             currentOutput.end();
-
             currentInput = currentOutput.getColorBufferTexture();
-
-
         }
-
         // 保存最后结果
         result = currentInput;
-//        batch.begin();
-//        result.bind();
-//        batch.draw(result, 0, 0, 512, 512, 0, 1, 1, 0); // Y 轴翻转
-//        batch.end();
-//        batch.setShader(null);
         return result;
-    }
-
-    private Matrix4 projectionMatrix;
-
-    public void setProjection(float width, float height) {
-        this.projectionMatrix = new Matrix4().setToOrtho2D(0, 0, width, height);
     }
 
     public Texture getResult() {
@@ -96,5 +71,13 @@ public class ShaderChainProcessor {
 
     public List<ShaderProgram> getShaders() {
         return shaders;
+    }
+
+    public void removeShader(ShaderProgram program) {
+        shaders.remove(program);
+    }
+
+    public void addShader(ShaderProgram shaderProgram){
+        shaders.add(shaderProgram);
     }
 }
