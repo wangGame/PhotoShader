@@ -28,9 +28,8 @@ public class PageView extends Group {
         image.setSize(texture.getWidth(), texture.getHeight());
         image.setOrigin(Align.center);
         image.setDebug(true);
-        image.setPosition(getWidth()/2f,getHeight()/2f,Align.center);
+        image.setPosition(getWidth()/2f,getHeight()/2f+500,Align.center);
         addActor(image);
-
 
         float ws = Constant.GAMEWIDTH / image.getWidth();
         float hs = Constant.GAMEWIDTH / image.getHeight();
