@@ -7,9 +7,8 @@ varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
 
-
-
 void main() {
-    vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
-    gl_FragColor = textureColor*vec4(0.8,0.0,0.0,1.0);
+    vec2 v_ballPosition = v_textCoords;
+    vec4 textureColor = v_color* texture2D(u_texture,v_ballPosition);
+    gl_FragColor = textureColor;
 }

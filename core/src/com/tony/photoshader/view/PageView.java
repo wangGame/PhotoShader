@@ -20,7 +20,7 @@ public class PageView extends Group {
     private TextureRegion region;
 
     public PageView() {
-        texture = Asset.getAsset().getTexture("phtos/demo_0.jpg");
+        texture = Asset.getAsset().getTexture("phtos/pre.png");
         processor = new ShaderChainProcessor(texture.getWidth(), texture.getHeight());
         setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
         region = new TextureRegion();
@@ -30,6 +30,11 @@ public class PageView extends Group {
         image.setDebug(true);
         image.setPosition(getWidth()/2f,getHeight()/2f,Align.center);
         addActor(image);
+
+        Image mo = new Image(texture);
+        addActor(mo);
+        mo.setPosition(600,400);
+        mo.setSize(200,200);
 
 
         float ws = Constant.GAMEWIDTH / image.getWidth();
