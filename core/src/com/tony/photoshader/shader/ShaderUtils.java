@@ -35,11 +35,10 @@ public class ShaderUtils {
     }
 
     public Filter getType(ShaderType shaderType){
+        System.out.println(shaderType);
         if (cacheProgram.containsKey(shaderType))return cacheProgram.get(shaderType);
         Filter filter = null;
-        if (shaderType == ShaderType.A){
-            filter = new ChangeAFilter();
-        }else if (shaderType == ShaderType.COLOR){
+        if (shaderType == ShaderType.COLOR){
             filter = new ChangeColorFilter();
         }else if (shaderType == ShaderType.SCALE){
             filter = new ChangeScaleFilter();

@@ -11,7 +11,7 @@ import com.tony.photoshader.shader.ShaderType;
 public class ControllView extends Group {
     private ScrollPane scrollPane;
     public ControllView(PageView photoPage){
-        setSize(Constant.GAMEWIDTH,110);
+        setSize(Constant.GAMEWIDTH,210);
 
         scrollPane = new ScrollPane(new Table(){{
             align(Align.left);
