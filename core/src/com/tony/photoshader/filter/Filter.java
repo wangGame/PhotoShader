@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
 public abstract class Filter {
-    private ShaderProgram program;
-    public abstract void extendsExecute();
+    protected ShaderProgram program;
     protected String vertPath;
     protected String fragPath;
 
@@ -18,7 +17,13 @@ public abstract class Filter {
         return program;
     }
 
+    public abstract void extendsExecute(float delta);
+
     public ShaderProgram getProgram() {
         return program;
+    }
+
+    public void dispose() {
+        program.dispose();
     }
 }

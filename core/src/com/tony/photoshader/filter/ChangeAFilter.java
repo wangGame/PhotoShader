@@ -8,7 +8,7 @@ public class ChangeAFilter extends Filter {
     }
 
     @Override
-    public void extendsExecute() {
+    public void extendsExecute(float delta) {
 
     }
 }

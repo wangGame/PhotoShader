@@ -4,3 +4,10 @@
 
 ## 实现的功能
 
+
+- BRIGHT,
+- CONTRAST,
+- EXPOSURE,
+- HUE,
+- SATURA,
+

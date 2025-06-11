@@ -1,7 +1,10 @@
 package com.tony.photoshader.shader;
 
 public enum ShaderType {
-    Portrait,
-    COLOR,
-    SCALE
+    BRIGHT,
+    CONTRAST,
+    EXPOSURE,
+    HUE,
+    SATURA,
+    Sharpen
 }
