@@ -6,5 +6,7 @@ public enum ShaderType {
     EXPOSURE,
     HUE,
     SATURA,
-    Sharpen
+    Sharpen,
+    split2X2,
+    split4X4
 }

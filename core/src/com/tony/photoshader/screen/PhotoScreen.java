@@ -26,7 +26,7 @@ public class PhotoScreen extends BaseScreen {
         filterShowGroup.setDebug(true);
         filterShowGroup.setPosition(Constant.GAMEWIDTH/2f,920,Align.center);
 
-        this.controllView = new ControllView(pageView);
+        this.controllView = new ControllView(pageView,filterShowGroup);
         addActor(controllView);
         controllView.setPosition(540,360, Align.bottom);
     }

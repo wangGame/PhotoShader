@@ -11,6 +11,7 @@ import com.tony.photoshader.filter.Filter;
 import com.tony.photoshader.filter.GrayFilter;
 import com.tony.photoshader.filter.HueFilter;
 import com.tony.photoshader.filter.SaturaFilter;
+import com.tony.photoshader.filter.SplitFilter;
 
 import java.util.HashMap;
 
@@ -53,6 +54,10 @@ public class ShaderUtils {
             filter = new HueFilter();
         }else if (shaderType == ShaderType.SATURA){
             filter = new SaturaFilter();
+        }else if (shaderType == ShaderType.split2X2){
+            filter = new SplitFilter(2);
+        }else if (shaderType == ShaderType.split4X4){
+            filter = new SplitFilter(4);
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);

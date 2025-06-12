@@ -1,7 +1,6 @@
 package com.tony.photoshader.view;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -18,7 +17,8 @@ public class NavItem extends Group {
     private Filter filter;
     private boolean addEd;
     private Label label;
-    public NavItem(PageView photoPage){
+    private ShaderType shaderType;
+    public NavItem(PageView photoPage, FilterShowGroup filterShowGroup){
         setSize(200,200);
         Image bgImg = Layer.getShadow();
         bgImg.setSize(getWidth(),getHeight());
@@ -37,8 +37,10 @@ public class NavItem extends Group {
                 super.clicked(event, x, y);
                 addEd = !addEd;
                 if (addEd) {
+                    filterShowGroup.fliter(shaderType);
                     photoPage.setShader(filter);
                 }else {
+                    filterShowGroup.removeFliter(shaderType);
                     photoPage.removeShader(filter);
                 }
             }
@@ -46,6 +48,7 @@ public class NavItem extends Group {
     }
 
     public void setShaderType(ShaderType value) {
+        this.shaderType = value;
         filter = ShaderUtils.getManager().getType(value);
         label.setText(value.name());
     }
