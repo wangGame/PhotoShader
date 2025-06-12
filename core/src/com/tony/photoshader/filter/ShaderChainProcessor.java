@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Matrix4;
-import com.kw.gdx.constant.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class ShaderChainProcessor {
     private final int width, height;
     private final SpriteBatch batch;
     private final FrameBuffer fboA, fboB;
-    private List<ShaderProgram> shaders;
+    private List<Filter> shaders;
     private Texture result;
 
     public ShaderChainProcessor(int width, int height) {
@@ -29,17 +28,18 @@ public class ShaderChainProcessor {
         fboB = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
     }
 
-    public Texture process(Texture inputTexture) {
+    public Texture process(Texture inputTexture, float delta) {
         Texture currentInput = inputTexture;
         FrameBuffer currentOutput;
         for (int i = 0; i < shaders.size(); i++) {
-            ShaderProgram shader = shaders.get(i);
+            Filter shader = shaders.get(i);
             currentOutput = (i % 2 == 0) ? fboA : fboB;
             currentOutput.begin();
             Gdx.gl.glClearColor(0, 0, 0, 0);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-            batch.setShader(shader);
             batch.begin();
+            batch.setShader(shader.getProgram());
+            shader.extendsExecute(delta);
             Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
             projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);
             // FBO 输出是上下翻转的
@@ -64,20 +64,20 @@ public class ShaderChainProcessor {
         batch.dispose();
         fboA.dispose();
         fboB.dispose();
-        for (ShaderProgram shader : shaders) {
+        for (Filter shader : shaders) {
             shader.dispose();
         }
     }
 
-    public List<ShaderProgram> getShaders() {
+    public List<Filter> getShaders() {
         return shaders;
     }
 
-    public void removeShader(ShaderProgram program) {
-        shaders.remove(program);
+    public void removeShader(Filter filter) {
+        shaders.remove(filter);
     }
 
-    public void addShader(ShaderProgram shaderProgram){
-        shaders.add(shaderProgram);
+    public void addShader(Filter filter){
+        shaders.add(filter);
     }
 }

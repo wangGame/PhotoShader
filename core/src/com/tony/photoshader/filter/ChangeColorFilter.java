@@ -8,7 +8,7 @@ public class ChangeColorFilter extends Filter {
     }
 
     @Override
-    public void extendsExecute() {
+    public void extendsExecute(float delta) {
 
     }
 }

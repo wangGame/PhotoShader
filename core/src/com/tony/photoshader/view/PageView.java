@@ -40,7 +40,7 @@ public class PageView extends Group {
     public void act(float delta) {
         super.act(delta);
         // 处理一次纹理并设置到 region（如果频繁处理可以缓存）
-        Texture processed = processor.process(texture);
+        Texture processed = processor.process(texture,delta);
         region.setTexture(processed);
         region.setRegion(0, 0, processed.getWidth(), processed.getHeight());
         if (processor.getShaders().size() % 2 != 0) {
@@ -50,11 +50,11 @@ public class PageView extends Group {
     }
 
     public void setShader(Filter filter) {
-        processor.addShader(filter.getProgram());
+        processor.addShader(filter);
     }
 
     public void removeShader(Filter filter) {
-        processor.removeShader(filter.getProgram());
+        processor.removeShader(filter);
     }
 
 }
