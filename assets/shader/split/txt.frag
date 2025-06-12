@@ -6,8 +6,8 @@ varying vec4 v_color;
 varying vec2 v_textCoords;
 uniform sampler2D u_texture;
 
-uniform float splitX = 10.0;
-uniform float splitY = 10.0;
+uniform float splitX;
+uniform float splitY;
 
 void main() {
     float scaleX = 1.0 / splitX;

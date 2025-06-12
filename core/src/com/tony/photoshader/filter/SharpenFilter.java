@@ -9,6 +9,9 @@ public class SharpenFilter extends Filter{
 
     @Override
     public void extendsExecute(float delta) {
+        program.setUniformf("sharpness",0.81f);
+        program.setUniformf("imageWidthFactor",0.01f);
+        program.setUniformf("imageHeightFactor",0.01f);
 
     }
 }

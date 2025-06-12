@@ -14,34 +14,24 @@ void main() {
     float centerMultiplier = 1.0 + 4.0 * sharpness;
     float edgeMultiplier = sharpness;
 
-
-
+   vec2 left = vec2(v_textCoords.x-imageWidthFactor,v_textCoords.y);
+   vec2 right = vec2(v_textCoords.x+imageWidthFactor,v_textCoords.y);
+   vec2 top = vec2(v_textCoords.x,v_textCoords.y-imageHeightFactor);
+   vec2 bottom = vec2(v_textCoords.x,v_textCoords.y-imageHeightFactor);
 
     vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
-    gl_FragColor = vec4((textureColor.rgb + vec3(brightness,brightness,brightness)),textureColor.w);
+    vec4 textureLeftColor = v_color* texture2D(u_texture,left);
+    vec4 textureRightColor = v_color* texture2D(u_texture,right);
+    vec4 textureTopColor = v_color* texture2D(u_texture,top);
+    vec4 textureBottomColor = v_color* texture2D(u_texture,bottom);
+
+    gl_FragColor =
+        vec4(
+            (textureColor * centerMultiplier
+                - (textureLeftColor * edgeMultiplier
+                + textureRightColor * edgeMultiplier
+                + textureTopColor * edgeMultiplier
+                + textureBottomColor * edgeMultiplier)));
 }
 
 
- "precision highp float;\n" +
-            "\n" +
-            "varying highp vec2 textureCoordinate;\n" +
-            "varying highp vec2 leftTextureCoordinate;\n" +
-            "varying highp vec2 rightTextureCoordinate; \n" +
-            "varying highp vec2 topTextureCoordinate;\n" +
-            "varying highp vec2 bottomTextureCoordinate;\n" +
-            "\n" +
-            "varying highp float centerMultiplier;\n" +
-            "varying highp float edgeMultiplier;\n" +
-            "\n" +
-            "uniform sampler2D inputImageTexture;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    mediump vec3 textureColor = texture2D(inputImageTexture, textureCoordinate).rgb;\n" +
-            "    mediump vec3 leftTextureColor = texture2D(inputImageTexture, leftTextureCoordinate).rgb;\n" +
-            "    mediump vec3 rightTextureColor = texture2D(inputImageTexture, rightTextureCoordinate).rgb;\n" +
-            "    mediump vec3 topTextureColor = texture2D(inputImageTexture, topTextureCoordinate).rgb;\n" +
-            "    mediump vec3 bottomTextureColor = texture2D(inputImageTexture, bottomTextureCoordinate).rgb;\n" +
-            "\n" +
-            "    gl_FragColor = vec4((textureColor * centerMultiplier - (leftTextureColor * edgeMultiplier + rightTextureColor * edgeMultiplier + topTextureColor * edgeMultiplier + bottomTextureColor * edgeMultiplier)), texture2D(inputImageTexture, bottomTextureCoordinate).w);\n" +
-            "}";

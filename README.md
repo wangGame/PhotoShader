@@ -11,3 +11,4 @@
 - HUE,
 - SATURA,
 - n split
+- Sharpen
