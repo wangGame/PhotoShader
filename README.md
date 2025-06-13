@@ -12,3 +12,5 @@
 - SATURA,
 - n split
 - Sharpen
+- FLIGHT
+- SINE

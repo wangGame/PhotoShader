@@ -8,10 +8,12 @@ import com.tony.photoshader.filter.ChangeScaleFilter;
 import com.tony.photoshader.filter.ContrastFilter;
 import com.tony.photoshader.filter.ExposureFilter;
 import com.tony.photoshader.filter.Filter;
+import com.tony.photoshader.filter.FlightFilter;
 import com.tony.photoshader.filter.GrayFilter;
 import com.tony.photoshader.filter.HueFilter;
 import com.tony.photoshader.filter.SaturaFilter;
 import com.tony.photoshader.filter.SharpenFilter;
+import com.tony.photoshader.filter.SineFilter;
 import com.tony.photoshader.filter.SplitFilter;
 
 import java.util.HashMap;
@@ -57,10 +59,14 @@ public class ShaderUtils {
             filter = new SaturaFilter();
         }else if (shaderType == ShaderType.Sharpen){
             filter = new SharpenFilter();
-        }else if (shaderType == ShaderType.split2X2){
+        }else if (shaderType == ShaderType.SPLIT2X2){
             filter = new SplitFilter(2);
-        }else if (shaderType == ShaderType.split4X4){
+        }else if (shaderType == ShaderType.SPLIT4X4){
             filter = new SplitFilter(4);
+        }else if (shaderType == ShaderType.FLIGHT){
+            filter = new FlightFilter();
+        }else if (shaderType == ShaderType.SINE){
+            filter = new SineFilter();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);

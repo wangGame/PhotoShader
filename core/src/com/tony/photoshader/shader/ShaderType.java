@@ -7,6 +7,8 @@ public enum ShaderType {
     HUE,
     SATURA,
     Sharpen,
-    split2X2,
-    split4X4
+    SPLIT2X2,
+    SPLIT4X4,
+    FLIGHT,
+    SINE
 }
