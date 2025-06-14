@@ -22,10 +22,6 @@ public class WipeMixFilter extends Filter {
         texture.bind();
         Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
         program.setUniformi("u_texture1", 1);
-//        program.setUniformf("v",sprite.getV());
-//        program.setUniformf("v2",sprite.getV2());
-//        program.setUniformf("u",sprite.getU());
-//        program.setUniformf("u2",sprite.getU2());
         program.setUniformf("time", (float) Math.sin(time));
     }
 }

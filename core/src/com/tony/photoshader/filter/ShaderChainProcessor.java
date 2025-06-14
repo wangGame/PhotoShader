@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.utils.Array;
+import com.kw.gdx.asset.Asset;
+import com.tony.photoshader.tetu.TeTuBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +46,24 @@ public class ShaderChainProcessor {
             Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
             projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);
             // FBO 输出是上下翻转的
-            currentInput.bind();
+
             batch.draw(currentInput, 0, 0, width, height, 0, 1, 1, 0);
-            currentInput.bind(-1);
             batch.setShader(null);
+
+
+            Array<TeTuBean> tiTu = shader.getTiTu();
+            if (tiTu != null) {
+                for (TeTuBean bean : tiTu) {
+                    Texture texture = bean.getTexture();
+                    batch.draw(texture, bean.getX(), bean.getY(), texture.getWidth(), texture.getHeight(), 0, 1, 1, 0);
+                }
+            }
+
             batch.end();
+
+
+
+
             currentOutput.end();
             currentInput = currentOutput.getColorBufferTexture();
         }

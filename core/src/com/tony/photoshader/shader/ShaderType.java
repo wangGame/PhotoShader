@@ -12,5 +12,6 @@ public enum ShaderType {
     FLIGHT,
     SINE,
     BEZIER,
-    WIPE
+    WIPE,
+    TIETU
 }

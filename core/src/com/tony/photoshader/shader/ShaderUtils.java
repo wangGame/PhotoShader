@@ -11,6 +11,7 @@ import com.tony.photoshader.filter.SaturaFilter;
 import com.tony.photoshader.filter.SharpenFilter;
 import com.tony.photoshader.filter.SineFilter;
 import com.tony.photoshader.filter.SplitFilter;
+import com.tony.photoshader.filter.TeTuFilter;
 import com.tony.photoshader.filter.WipeMixFilter;
 
 import java.util.HashMap;
@@ -68,6 +69,8 @@ public class ShaderUtils {
             filter = new BezierFilter();
         }else if (shaderType == ShaderType.WIPE){
             filter = new WipeMixFilter();
+        }else if (shaderType == ShaderType.TIETU){
+            filter = new TeTuFilter();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);
