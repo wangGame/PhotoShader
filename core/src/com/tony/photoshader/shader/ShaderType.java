@@ -10,5 +10,7 @@ public enum ShaderType {
     SPLIT2X2,
     SPLIT4X4,
     FLIGHT,
-    SINE
+    SINE,
+    BEZIER,
+    WIPE
 }

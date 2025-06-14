@@ -1,20 +1,17 @@
 package com.tony.photoshader.shader;
 
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.tony.photoshader.filter.BezierFilter;
 import com.tony.photoshader.filter.BrightnessFilter;
-import com.tony.photoshader.filter.ChangeAFilter;
-import com.tony.photoshader.filter.ChangeColorFilter;
-import com.tony.photoshader.filter.ChangeScaleFilter;
 import com.tony.photoshader.filter.ContrastFilter;
 import com.tony.photoshader.filter.ExposureFilter;
 import com.tony.photoshader.filter.Filter;
 import com.tony.photoshader.filter.FlightFilter;
-import com.tony.photoshader.filter.GrayFilter;
 import com.tony.photoshader.filter.HueFilter;
 import com.tony.photoshader.filter.SaturaFilter;
 import com.tony.photoshader.filter.SharpenFilter;
 import com.tony.photoshader.filter.SineFilter;
 import com.tony.photoshader.filter.SplitFilter;
+import com.tony.photoshader.filter.WipeMixFilter;
 
 import java.util.HashMap;
 
@@ -67,6 +64,10 @@ public class ShaderUtils {
             filter = new FlightFilter();
         }else if (shaderType == ShaderType.SINE){
             filter = new SineFilter();
+        }else if (shaderType == ShaderType.BEZIER){
+            filter = new BezierFilter();
+        }else if (shaderType == ShaderType.WIPE){
+            filter = new WipeMixFilter();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);
