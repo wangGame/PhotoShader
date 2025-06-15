@@ -39,4 +39,7 @@ public abstract class Filter {
     public Array<TeTuBean> getTiTu() {
         return tiTu;
     }
+
+    public void extendsExecute(float delta,Texture texture){}
+
 }

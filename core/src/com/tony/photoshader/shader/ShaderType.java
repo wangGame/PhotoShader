@@ -13,5 +13,6 @@ public enum ShaderType {
     SINE,
     BEZIER,
     WIPE,
-    TIETU
+    TIETU,
+    OUTLINE
 }

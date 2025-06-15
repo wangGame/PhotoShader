@@ -23,7 +23,9 @@ public class PageView extends Group {
     private TextureRegion region;
 
     public PageView() {
-        texture = Asset.getAsset().getTexture("phtos/demo_0.jpg");
+//        texture = Asset.getAsset().getTexture("phtos/demo_0.jpg");assets/phtos/uuu3.png
+        texture = Asset.getAsset().getTexture("phtos/uuu3.png");
+
         processor = new ShaderChainProcessor(texture.getWidth(), texture.getHeight());
         setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
         region = new TextureRegion();

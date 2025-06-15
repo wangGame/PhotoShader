@@ -7,6 +7,7 @@ import com.tony.photoshader.filter.ExposureFilter;
 import com.tony.photoshader.filter.Filter;
 import com.tony.photoshader.filter.FlightFilter;
 import com.tony.photoshader.filter.HueFilter;
+import com.tony.photoshader.filter.OutLineFilter;
 import com.tony.photoshader.filter.SaturaFilter;
 import com.tony.photoshader.filter.SharpenFilter;
 import com.tony.photoshader.filter.SineFilter;
@@ -71,6 +72,8 @@ public class ShaderUtils {
             filter = new WipeMixFilter();
         }else if (shaderType == ShaderType.TIETU){
             filter = new TeTuFilter();
+        }else if (shaderType == ShaderType.OUTLINE){
+            filter = new OutLineFilter();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);

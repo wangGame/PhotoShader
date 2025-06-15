@@ -43,6 +43,7 @@ public class ShaderChainProcessor {
             batch.begin();
             batch.setShader(shader.getProgram());
             shader.extendsExecute(delta);
+            shader.extendsExecute(delta,currentInput);
             Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
             projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);
             // FBO 输出是上下翻转的
