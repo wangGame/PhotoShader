@@ -39,6 +39,7 @@ public class ShaderChainProcessor {
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.begin();
             batch.setShader(shader.getProgram());
+            shader.setSize(width,height);
             shader.extendsExecute(delta);
             Matrix4 projectionMatrix1 = batch.getProjectionMatrix();
             projectionMatrix1.idt().setToOrtho2D(0, 0, width, height);

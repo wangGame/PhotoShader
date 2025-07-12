@@ -26,4 +26,11 @@ public abstract class Filter {
     public void dispose() {
         program.dispose();
     }
+
+    protected float width;
+    protected float height;
+    public void setSize(float width, float height) {
+        this.width = width;
+        this.height = height;
+    }
 }

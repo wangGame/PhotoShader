@@ -18,7 +18,7 @@ public class NavItem extends Group {
     private boolean addEd;
     private Label label;
     private ShaderType shaderType;
-    public NavItem(PageView photoPage, FilterShowGroup filterShowGroup){
+    public NavItem(SingleGameView photoPage, FilterShowGroup filterShowGroup){
         setSize(200,200);
         Image bgImg = Layer.getShadow();
         bgImg.setSize(getWidth(),getHeight());

@@ -9,7 +9,7 @@ import com.tony.photoshader.shader.ShaderType;
 
 public class ControllView extends Group {
     private ScrollPane scrollPane;
-    public ControllView(PageView photoPage, FilterShowGroup filterShowGroup){
+    public ControllView(SingleGameView photoPage, FilterShowGroup filterShowGroup){
         setSize(Constant.GAMEWIDTH,410);
 
         scrollPane = new ScrollPane(new Table(){{

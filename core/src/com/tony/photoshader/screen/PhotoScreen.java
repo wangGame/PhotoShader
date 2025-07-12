@@ -6,10 +6,10 @@ import com.kw.gdx.constant.Constant;
 import com.kw.gdx.screen.BaseScreen;
 import com.tony.photoshader.view.ControllView;
 import com.tony.photoshader.view.FilterShowGroup;
-import com.tony.photoshader.view.PageView;
+import com.tony.photoshader.view.SingleGameView;
 
 public class PhotoScreen extends BaseScreen {
-    private PageView pageView;
+    private SingleGameView singleGameView;
     private ControllView controllView;
     public PhotoScreen(BaseGame game) {
         super(game);
@@ -18,15 +18,15 @@ public class PhotoScreen extends BaseScreen {
     @Override
     public void initView() {
         super.initView();
-        pageView = new PageView();
-        addActor(pageView);
+        singleGameView = new SingleGameView();
+        addActor(singleGameView);
 
         FilterShowGroup filterShowGroup = new FilterShowGroup();
         addActor(filterShowGroup);
         filterShowGroup.setDebug(true);
         filterShowGroup.setPosition(Constant.GAMEWIDTH/2f,920,Align.center);
 
-        this.controllView = new ControllView(pageView,filterShowGroup);
+        this.controllView = new ControllView(singleGameView,filterShowGroup);
         addActor(controllView);
         controllView.setPosition(540,360, Align.bottom);
     }
