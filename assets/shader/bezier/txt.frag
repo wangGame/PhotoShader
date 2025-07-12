@@ -23,6 +23,9 @@ vec2 cubicBezier(vec2 t, vec2 p0, vec2 p1, vec2 p2, vec2 p3) {
 }
 
 void main() {
-    vec4 textureColor = v_color* texture2D(u_texture,v_textCoords);
-    gl_FragColor = vec4((textureColor.rgb + vec3(brightness,brightness,brightness)),textureColor.w);
+    vec2 controlPoint1 = vec2(0.05,v_textCoords.x);
+    vec2 controlPoint2 = vec2(0.5,0.4);
+    vec2 deformedUV = cubicBezier(v_textCoords, vec2(0.0), controlPoint1, controlPoint2, vec2(100.0));
+    vec4 textureColor = v_color* texture2D(u_texture,deformedUV);
+    gl_FragColor = vec4((textureColor.rgb),textureColor.w);
 }

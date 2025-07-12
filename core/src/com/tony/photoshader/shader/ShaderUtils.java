@@ -2,6 +2,7 @@ package com.tony.photoshader.shader;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.tony.photoshader.filter.BlurFilter;
+import com.tony.photoshader.filter.BezierFilter;
 import com.tony.photoshader.filter.BrightnessFilter;
 import com.tony.photoshader.filter.ChangeAFilter;
 import com.tony.photoshader.filter.ChangeColorFilter;
@@ -13,8 +14,6 @@ import com.tony.photoshader.filter.FlightFilter;
 import com.tony.photoshader.filter.FourOneFilter;
 import com.tony.photoshader.filter.GrayFilter;
 import com.tony.photoshader.filter.HueFilter;
-import com.tony.photoshader.filter.MultFilter;
-import com.tony.photoshader.filter.NoShader;
 import com.tony.photoshader.filter.SaturaFilter;
 import com.tony.photoshader.filter.SharpenFilter;
 import com.tony.photoshader.filter.SineFilter;
@@ -71,6 +70,14 @@ public class ShaderUtils {
             filter = new FlightFilter();
         }else if (shaderType == ShaderType.SINE){
             filter = new SineFilter();
+        }else if (shaderType == ShaderType.BEZIER){
+            filter = new BezierFilter();
+        }else if (shaderType == ShaderType.WIPE){
+            filter = new WipeMixFilter();
+        }else if (shaderType == ShaderType.TIETU){
+            filter = new TeTuFilter();
+        }else if (shaderType == ShaderType.OUTLINE){
+            filter = new OutLineFilter();
         }else if (shaderType == ShaderType.FOURONE){
             filter = new FourOneFilter();
         }else if (shaderType == ShaderType.BLUR){

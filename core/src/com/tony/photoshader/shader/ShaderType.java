@@ -16,5 +16,9 @@ public enum ShaderType {
     NoShader,
 
     /// ////////////////////
-    MultFilter
+    MultFilter,
+    BEZIER,
+    WIPE,
+    TIETU,
+    OUTLINE
 }
