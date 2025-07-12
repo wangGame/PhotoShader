@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class ContrastFilter extends Filter{
     private float timeAll;
     public ContrastFilter(){
@@ -10,5 +12,10 @@ public class ContrastFilter extends Filter{
     public void extendsExecute(float delta) {
         this.timeAll += delta;
         program.setUniformf("contrast",timeAll);
+    }
+
+    @Override
+    public void extendsExecute(float delta, Texture texture) {
+
     }
 }

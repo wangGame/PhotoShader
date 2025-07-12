@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class SaturaFilter extends Filter{
     private float timeAll;
     public SaturaFilter(){
@@ -8,7 +10,7 @@ public class SaturaFilter extends Filter{
     }
 
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
         this.timeAll += delta;
         program.setUniformf("saturation",timeAll);
     }

@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class ChangeScaleFilter extends Filter {
 
     public ChangeScaleFilter() {
@@ -8,7 +10,7 @@ public class ChangeScaleFilter extends Filter {
     }
 
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
 
     }
 }

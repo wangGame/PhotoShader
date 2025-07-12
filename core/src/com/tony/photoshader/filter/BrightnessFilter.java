@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class BrightnessFilter extends Filter{
     private float timeAll;
     public BrightnessFilter(){
@@ -8,7 +10,7 @@ public class BrightnessFilter extends Filter{
     }
 
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
         this.timeAll += delta;
         program.setUniformf("brightness",timeAll);
     }

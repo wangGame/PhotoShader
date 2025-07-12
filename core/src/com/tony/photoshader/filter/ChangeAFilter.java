@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class ChangeAFilter extends Filter {
 
     public ChangeAFilter() {
@@ -8,7 +10,7 @@ public class ChangeAFilter extends Filter {
     }
 
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
 
     }
 }

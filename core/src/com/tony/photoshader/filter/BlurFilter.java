@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class BlurFilter extends Filter{
 
     private float[] xx = new float[2];
@@ -8,8 +10,10 @@ public class BlurFilter extends Filter{
         this.fragPath = "shader/blur/txt.frag";
     }
 
+
+
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
         xx[0] = width;
         xx[1] = height;
         program.setUniform2fv("resolution",xx,0,2);

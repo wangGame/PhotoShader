@@ -14,9 +14,9 @@ public class WipeMixFilter extends Filter {
         this.fragPath = "shader/wipemix/txt.frag";
         this.texture = Asset.getAsset().getTexture("phtos/pre.png");
     }
-
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
+
         time  += delta;
         Gdx.gl.glActiveTexture(GL20.GL_TEXTURE1);
         texture.bind();

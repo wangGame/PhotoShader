@@ -1,5 +1,7 @@
 package com.tony.photoshader.filter;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class BezierFilter extends Filter{
     public BezierFilter(){
         this.vertPath = "shader/bezier/txt.vert";
@@ -7,7 +9,7 @@ public class BezierFilter extends Filter{
     }
 
     @Override
-    public void extendsExecute(float delta) {
+    public void extendsExecute(float delta, Texture texture) {
 
     }
 }
