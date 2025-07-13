@@ -13,6 +13,10 @@ public abstract class Filter {
     protected String fragPath;
     protected Array<TeTuBean> teTuBeans;
 
+    public Filter(){
+        this.vertPath = "shader/normal/txt.vert";
+        this.fragPath = "shader/normal/txt.frag";
+    }
 
     public ShaderProgram createShderProgram(){
         if (vertPath == null || fragPath == null){

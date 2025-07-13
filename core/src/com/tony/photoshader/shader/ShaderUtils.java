@@ -79,6 +79,8 @@ public class ShaderUtils {
             filter = new BezierFilter();
         }else if (shaderType == ShaderType.WIPE){
             filter = new WipeMixFilter();
+        }else if (shaderType == ShaderType.TIETU){
+            filter = new TeTuFilter();
         }else if (shaderType == ShaderType.OUTLINE){
             filter = new OutLineFilter();
         }else if (shaderType == ShaderType.FOURONE){

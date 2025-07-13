@@ -19,6 +19,6 @@ public enum ShaderType {
     MultFilter,
     BEZIER,
     WIPE,
-
+    TIETU,
     OUTLINE
 }
