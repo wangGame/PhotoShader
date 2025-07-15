@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SingleGameView extends BaseGameView {
     public SingleGameView() {
-        texture = Asset.getAsset().getTexture("phtos/demo_0.jpg");
+        texture = Asset.getAsset().getTexture("xx.png");
         processor = new ShaderChainProcessor(texture.getWidth(), texture.getHeight());
         setSize(Constant.GAMEWIDTH, Constant.GAMEHIGHT);
         region = new TextureRegion();

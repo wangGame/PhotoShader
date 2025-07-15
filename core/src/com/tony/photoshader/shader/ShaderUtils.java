@@ -15,6 +15,7 @@ import com.tony.photoshader.filter.FourOneFilter;
 import com.tony.photoshader.filter.GrayFilter;
 import com.tony.photoshader.filter.HueFilter;
 import com.tony.photoshader.filter.MultFilter;
+import com.tony.photoshader.filter.NetLight;
 import com.tony.photoshader.filter.NoShader;
 import com.tony.photoshader.filter.OutLineFilter;
 import com.tony.photoshader.filter.SaturaFilter;
@@ -91,6 +92,8 @@ public class ShaderUtils {
             filter = new NoShader();
         }else if (shaderType == ShaderType.MultFilter){
             filter = new MultFilter();
+        }else if (shaderType == ShaderType.neiLight){
+            filter = new NetLight();
         }
         if (filter!=null) {
             cacheProgram.put(shaderType, filter);

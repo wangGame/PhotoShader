@@ -20,5 +20,6 @@ public enum ShaderType {
     BEZIER,
     WIPE,
     TIETU,
-    OUTLINE
+    OUTLINE,
+    neiLight
 }
